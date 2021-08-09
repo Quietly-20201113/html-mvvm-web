@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8">
+        <title>MVVM 各个样例测试</title>
+        <style>
+            .name-color{
+                color: red;
+                font-size: 20px;
+               
+            }
+            .name{
+                font-weight: 600;
+            }
+            .name-color-small{
+                color: black;
+                font-size: 11px;
+            }
+        </style>
+     <script id="interpolationtmpl" type="text/x-dot-template">
+            <div>Hi {{=it.name}}!</div>
+            <div>{{=it.age || ''}}</div>
+    </script>
+    </head>
+    <body>
+
+        <div id="test-app">
+            <div>
+                <h1>v-show控制显示隐藏</h1>
+                <span v-show="show">显示隐藏这段内容</span>
+                <button v-on:click="showClick">操作</button>
+            </div>
+            <div>
+                <h1>v-model双向绑定</h1>
+                <input type="text" v-model="word">
+                <div>
+                    <span>页面显示绑定输入数据 :</span><span> {{word}}</span>
+                </div>
+            </div>
+            <div>
+                <h1>class动态绑定</h1>
+                <div v-class="class">动态更改class替换颜色字体大小</div>
+                <button v-on:click="classClick">操作</button>
+            </div>
+            <div>
+                <h1>html动态添加</h1>
+                <div v-html="htmlString"></div>
+                <button v-on:click="htmlClick">操作</button>
+            </div>
+            <div>
+                <h1>计算属性处理</h1>
+                <input type="number" v-model="text">
+                <input type="number" v-model="num">
+                <p>相加乘</p>
+                <p>{{add}}</p>
+            </div>
+            <div>
+                <h1>副作用监听</h1>
+                <span>输入name更改json</span><input type="text" v-model="json.name">
+                <div v-show="isName">
+                    <h4>内容输入正确</h4>
+                </div>
+            </div>
+            <div>
+                <h1>js模板引擎</h1>
+                 <p>对象渲染</p><button v-on:click="jsClick">点击渲染</button>
+                 <div v-html="jsHtmlJson"></div>
+            </div>
+        </div>
+       
+    </body>
+    <script src="./jquery.min.js"></script>
+    <script src="../mvvm/compile.js"></script>
+    <script src="../mvvm/mvvm.js"></script>
+    <script src="../mvvm/observer.js"></script>
+    <script src="../mvvm/watcher.js"></script>
+    <script type="module" src="./index.js"></script>
+</html>
